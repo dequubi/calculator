@@ -38,3 +38,21 @@ npm run serve
 ```
 npm run build
 ```
+
+### Публикация в GitHub Pages
+
+Создаете локальную ветку `gh-pages` с содержимым ветки `main`. Создаете файл `vue.config.js` в корневой папке со следующим содержимым:
+
+```
+module.exports = {
+    publicPath: ''
+}
+```
+
+Делаете `npm run build`. Из файла `.gitignore` удаляете строчку с `/dist`. Делаете коммит *локально*. Далее выполняете команду, которая загружает в ветку только содержимое папки `/dist`:
+
+```
+git subtree push —prefix dist origin gh-pages
+```
+
+Страница на GitHub Pages обновляется в течение пяти минут.
