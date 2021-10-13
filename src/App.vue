@@ -16,16 +16,16 @@
 </template>
 
 <script>
-import CalcRubble from "@/components/CalcRubble";
 import CalcSeam from "@/components/CalcSeam";
+import CalcRubble from "@/components/CalcRubble";
 import CalcProtection from "@/components/CalcProtection";
 
 export default {
-  components: {CalcProtection, CalcSeam, CalcRubble},
+  components: {CalcSeam, CalcRubble, CalcProtection},
 
   data() {
     return {
-      calc : ''
+      calc : 'calc-seam'
     }
   }
 }
