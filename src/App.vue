@@ -1,34 +1,23 @@
 <template>
   <div class="app">
-    <input type="radio" value="calc-seam" v-model="calc">
-    <label>Герметизация швов</label>
-    <br>
-    <input type="radio" value="calc-rubble" v-model="calc">
-    <label>Устройство ЩМДШ</label>
-    <br>
-    <input type="radio" value="calc-protection" v-model="calc">
-    <label>Защита и восстановление покрытия</label>
-    <br>
-    <component
-        :is="calc"
-    />
+    <Calculator></Calculator>
   </div>
 </template>
 
 <script>
-import CalcSeam from "@/components/CalcSeam";
-import CalcRubble from "@/components/CalcRubble";
-import CalcProtection from "@/components/CalcProtection";
+  import Calculator from "@/components/Calculator";
 
-export default {
-  components: {CalcSeam, CalcRubble, CalcProtection},
+  export default {
+    name: "App",
 
-  data() {
-    return {
-      calc : 'calc-seam'
+    components: {Calculator},
+
+    data() {
+      return {
+
+      }
     }
   }
-}
 
 </script>
 
