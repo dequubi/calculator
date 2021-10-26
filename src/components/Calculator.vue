@@ -1,14 +1,12 @@
 <template>
   <p>1. Выберите вид работ</p>
-  <input type="radio" value="calc-sealing" v-model="calc">
-  <label>Герметизация швов</label>
-  <br>
-  <input type="radio" value="calc-rubble" v-model="calc">
-  <label>Устройство ЩМДШ</label>
-  <br>
-  <input type="radio" value="calc-protection" v-model="calc">
-  <label>Защита и восстановление покрытия</label>
-  <br>
+  <div v-for="radio in radioButtons">
+    <calc-radio-button
+        name="work-type"
+        :label="radio.label"
+        v-model="calc"
+        :value="radio.value"/>
+  </div>
   <component
       :is="calc"
   />
@@ -19,11 +17,12 @@
 import CalcSealing from "@/components/CalcSealing";
 import CalcRubble from "@/components/CalcRubble";
 import CalcProtection from "@/components/CalcProtection";
+import CalcRadioButton from "./UI/CalcRadioButton";
 
 export default {
   name: "Calculator",
 
-  components: {CalcSealing, CalcRubble, CalcProtection},
+  components: {CalcRadioButton, CalcSealing, CalcRubble, CalcProtection},
 
   data() {
     return {
