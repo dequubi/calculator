@@ -1,4 +1,5 @@
 <template>
+  <p class="seamNum">Шов {{seam.id}}</p>
   <calc-input
       label="Длина шва, м"
       v-model="seam.len"
@@ -25,6 +26,7 @@ export default {
 
   props: {
     seam: {
+      id: 1,
       len: "",
       cuttingWidth: "",
       depth: ""
@@ -39,5 +41,8 @@ export default {
 </script>
 
 <style scoped>
-
+.seamNum{
+  margin-top: 5px;
+  padding: auto;
+}
 </style>

@@ -16,6 +16,7 @@
       v-model="seams"
       :seams="seams"
     />
+    <button class="btn" @click="addSeam">Добавить шов</button>
   </div>
 </template>
 
@@ -36,13 +37,36 @@ export default {
         {value: 'zone2', name: 'zone2'},
       ],
       seams: [
-        {id: 0, len: "", cuttingWidth: "", depth: ""},
-      ]
+        {id: 1, len: "", cuttingWidth: "", depth: ""},
+      ],
+      countSeam: 1
+    }
+  },
+  methods:{
+    addSeam(){
+      this.countSeam +=1;
+      const newSeam = {
+        id: this.countSeam,
+        len: "",
+        cuttingWidth: "",
+        depth:""
+      }
+      this.seams.push(newSeam);
     }
   }
 }
 </script>
 
 <style scoped>
+
+.btn{
+  margin-top: 15px;
+  align-self: flex-end;
+  padding: 10px 15px;
+  background: cornflowerblue;
+  color: white;
+  border: 1px blue;
+  border-radius: 4px;
+}
 
 </style>
