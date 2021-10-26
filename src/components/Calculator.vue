@@ -27,7 +27,21 @@ export default {
 
   data() {
     return {
-      calc : 'calc-seam',
+      calc : 'calc-sealing',
+      radioButtons: [
+        {
+          label: "Герметизация швов",
+          value: "calc-sealing"
+        },
+        {
+          label: "Устройство ЩМДШ",
+          value: "calc-rubble"
+        },
+        {
+          label: "Защита и восстановление покрытия",
+          value: "calc-protection"
+        }
+      ]
     }
   }
 }
