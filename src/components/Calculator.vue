@@ -27,7 +27,7 @@ export default {
 
   data() {
     return {
-      calc : 'calc-seam'
+      calc : 'calc-seam',
     }
   }
 }

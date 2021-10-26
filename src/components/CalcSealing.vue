@@ -1,12 +1,19 @@
 <template>
-  <p>2. Настройте фильтры</p>
+  <div>
+    <p>2. Настройте фильтры</p>
+    <calc-drop-down
+        v-model="roadClimateZone"
+        label="Label 1"
+        :options="roadClimateZoneOptions"
+    />
+    <calc-drop-down
+        v-model="roadClimateZone"
+        label="Label 2"
+        :options="roadClimateZoneOptions"
+    />
+    <p>3. Введите данные</p>
 
-  <calc-drop-down
-      v-model="roadClimateZone"
-      :options="roadClimateZoneOptions"
-  />
-
-
+  </div>
 </template>
 
 <script>

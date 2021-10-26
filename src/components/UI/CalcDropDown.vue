@@ -1,4 +1,5 @@
 <template>
+  <div> {{ $attrs.label }}</div>
   <select v-model="modelValue" @change="changeOption">
     <option disabled value="">Выберите из списка</option>
     <option
