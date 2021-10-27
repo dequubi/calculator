@@ -1,11 +1,13 @@
 <template>
-  <p>1. Выберите вид работ</p>
-  <div v-for="radio in radioButtons">
-    <calc-radio-button
-        name="work-type"
-        :label="radio.label"
-        v-model="calc"
-        :value="radio.value"/>
+  <h2>1. Выберите вид работ</h2>
+  <div class="radio-list">
+    <div class="radio" v-for="radio in radioButtons" :key="radio.value">
+      <calc-radio-button
+          name="work-type"
+          :label="radio.label"
+          v-model="calc"
+          :value="radio.value"/>
+    </div>
   </div>
   <component
       :is="calc"
@@ -47,6 +49,10 @@ export default {
 </script>
 
 
-<style scoped>
-
+<style>
+.radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 </style>

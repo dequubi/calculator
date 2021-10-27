@@ -1,7 +1,9 @@
 <template>
-  <div> {{ $attrs.label }} </div>
+<div class="input">
+  <div class="label"> {{ $attrs.label }} </div>
   <input :value="modelValue" @input="updateInput">
   <div v-if="$attrs.error != ''"> {{ $attrs.error }} </div>
+</div>
 </template>
 
 <script>
@@ -21,5 +23,13 @@ export default {
 </script>
 
 <style scoped>
+
+.label {
+  font-size: smaller;
+}
+
+input {
+  width: 100%;
+}
 
 </style>

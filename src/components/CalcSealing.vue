@@ -1,22 +1,30 @@
 <template>
   <div>
-    <p>2. Настройте фильтры</p>
-    <calc-drop-down
-        v-model="roadClimateZone"
-        label="Label 1"
-        :options="roadClimateZoneOptions"
-    />
-    <calc-drop-down
-        v-model="roadClimateZone"
-        label="Label 2"
-        :options="roadClimateZoneOptions"
-    />
-    <p>3. Введите данные</p>
-    <calc-seam
-      v-for="seam in seams"
-      :seam="seam"
-      :key="seam.id"
-    />
+    <h2>2. Настройте фильтры</h2>
+    <div class="filters">
+      <div class="dropdown">
+        <calc-drop-down
+            v-model="roadClimateZone"
+            label="Выберите дорожно-климатическую зону"
+            :options="roadClimateZoneOptions"
+        />
+      </div>
+      <div class="dropdown">
+        <calc-drop-down
+            v-model="roadClimateZone"
+            label="Выберите герметик"
+            :options="roadClimateZoneOptions"
+        />
+      </div>
+    </div>
+    <h2>3. Введите данные</h2>
+    <div class="seam-list">
+      <calc-seam
+        v-for="seam in seams"
+        :seam="seam"
+        :key="seam.id"
+      />
+    </div>
     <button class="btn" @click="addSeam">Добавить шов</button>
   </div>
 </template>
@@ -58,6 +66,12 @@ export default {
 </script>
 
 <style scoped>
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .btn{
   margin-top: 15px;

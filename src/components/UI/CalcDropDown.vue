@@ -34,5 +34,7 @@ export default {
 </script>
 
 <style scoped>
-
+select {
+  width: 100%;
+}
 </style>
