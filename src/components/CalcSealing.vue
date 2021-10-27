@@ -12,9 +12,10 @@
         :options="roadClimateZoneOptions"
     />
     <p>3. Введите данные</p>
-    <calc-seams-list
-      v-model="seams"
-      :seams="seams"
+    <calc-seam
+      v-for="seam in seams"
+      :seam="seam"
+      :key="seam.id"
     />
     <button class="btn" @click="addSeam">Добавить шов</button>
   </div>
@@ -24,11 +25,10 @@
 
 import CalcDropDown from "./UI/CalcDropDown";
 import CalcSeam from "./CalcSeam";
-import CalcSeamsList from "./CalcSeamsList";
 
 export default {
   name: "CalcSealing",
-  components: {CalcSeamsList, CalcSeam, CalcDropDown},
+  components: {CalcSeam, CalcDropDown},
   data() {
     return {
       roadClimateZone : '',
