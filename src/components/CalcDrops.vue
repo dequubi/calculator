@@ -8,7 +8,7 @@
         :key="mob.id"
       />
     </div>
-    <button class="btn" @click="addmob">Добавить моба</button>
+    <button class="btn" @click="addMob">Добавить моба</button>
   </div>
 </template>
 
@@ -22,16 +22,6 @@ export default {
   components: {CalcMob, CalcDropDown},
   data() {
     return {
-      roadClimateZone : '',
-      roadClimateZoneOptions : [
-        {value: 'zone1', name: 'zone1'},
-        {value: 'zone2', name: 'zone2'},
-      ],
-      sealantType : '',
-      sealantTypeOptions : [
-        {value: 'seal1', name: 'seal1'},
-        {value: 'seal2', name: 'seal2'},
-      ],
       mobs: [
         {id: 1, name: "", lootQuantity: ""},
       ],
@@ -39,13 +29,12 @@ export default {
     }
   },
   methods:{
-    addmob(){
+    addMob(){
       this.countMob +=1;
       const newMob = {
         id: this.countMob,
-        len: "",
-        cuttingWidth: "",
-        depth:""
+        name: "",
+        lootQuantity: ""
       }
       this.mobs.push(newMob);
     }

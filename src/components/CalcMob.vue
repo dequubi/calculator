@@ -3,7 +3,7 @@
   <div class="inputs">
     <div class="dropdown">
         <calc-drop-down
-            v-model="mobType"
+            v-model="mob.name"
             label="Название моба"
             :options="mobTypeOptions"
         />
