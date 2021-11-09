@@ -11,9 +11,9 @@
       </div>
       <div class="dropdown">
         <calc-drop-down
-            v-model="roadClimateZone"
+            v-model="sealantType"
             label="Выберите герметик"
-            :options="roadClimateZoneOptions"
+            :options="sealantTypeOptions"
         />
       </div>
     </div>
@@ -43,6 +43,11 @@ export default {
       roadClimateZoneOptions : [
         {value: 'zone1', name: 'zone1'},
         {value: 'zone2', name: 'zone2'},
+      ],
+      sealantType : '',
+      sealantTypeOptions : [
+        {value: 'seal1', name: 'seal1'},
+        {value: 'seal2', name: 'seal2'},
       ],
       seams: [
         {id: 1, len: "", cuttingWidth: "", depth: ""},
