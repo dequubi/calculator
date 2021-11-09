@@ -1,15 +1,13 @@
 <template>
-  <div>
-    TestRubble
-  </div>
+
 </template>
 
 <script>
 export default {
-  name: "CalcRubble"
+    name: "CalcPerimeterData"
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

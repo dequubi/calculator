@@ -1,5 +1,5 @@
 <template>
-  <h2>1. Выберите вид работ</h2>
+  <h2>Выберите тип калькулятора</h2>
   <div class="radio-list">
     <div class="radio" v-for="radio in radioButtons" :key="radio.value">
       <calc-radio-button
@@ -16,31 +16,26 @@
 
 <script>
 
-import CalcSealing from "@/components/CalcSealing";
-import CalcRubble from "@/components/CalcRubble";
-import CalcProtection from "@/components/CalcProtection";
+import CalcDrops from "@/components/CalcDrops";
+import CalcPerimeter from "@/components/CalcPerimeter";
 import CalcRadioButton from "./UI/CalcRadioButton";
 
 export default {
   name: "Calculator",
 
-  components: {CalcRadioButton, CalcSealing, CalcRubble, CalcProtection},
+  components: {CalcRadioButton, CalcDrops, CalcPerimeter},
 
   data() {
     return {
-      calc : 'calc-sealing',
+      calc : 'calc-drops',
       radioButtons: [
         {
-          label: "Герметизация швов",
-          value: "calc-sealing"
+          label: "Сколько мобов нужно убить, чтобы гарантированно выбить с них X количество лута",
+          value: "calc-drops"
         },
         {
-          label: "Устройство ЩМДШ",
-          value: "calc-rubble"
-        },
-        {
-          label: "Защита и восстановление покрытия",
-          value: "calc-protection"
+          label: "Калькулятор периметра",
+          value: "calc-perimeter"
         }
       ]
     }

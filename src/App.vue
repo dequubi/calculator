@@ -34,8 +34,9 @@
 .app {
   padding: 20px;
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
-  width: 100vw;
+  width: 1024px;
   background-color: rgb(255, 255, 255);
 }
 

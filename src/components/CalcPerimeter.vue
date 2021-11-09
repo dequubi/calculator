@@ -1,12 +1,12 @@
 <template>
   <div>
-    TestProtection
+    TestPerimeter
   </div>
 </template>
 
 <script>
 export default {
-  name: "CalcProtection"
+  name: "CalcPerimeter"
 }
 </script>
 
