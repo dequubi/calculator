@@ -63,4 +63,18 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+
+.btn{
+  margin-top: 15px;
+  align-self: flex-end;
+  padding: 10px 15px;
+  background: cornflowerblue;
+  color: white;
+  border: 1px blue;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background: rgb(73, 112, 185);
+}
 </style>
