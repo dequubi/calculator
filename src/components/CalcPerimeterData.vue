@@ -11,11 +11,6 @@
         v-model="perimeter.lenY"
         @input="updateInput"
     />
-    <calc-input
-        label="Версия"
-        v-model="perimeter.verison"
-        @input="updateInput"
-    />
   </div>
 </template>
 

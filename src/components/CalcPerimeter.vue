@@ -2,11 +2,20 @@
   <div>
     <h2>Выберите фильтры</h2>
     <div class="drop-downs">
-      <calc-drop-down
-        v-model="dropDownPerimeterType"
-        label="Тип периметра"
-        :options="dropDownPerimeterTypeOptions"
-        @change="updatePerimeterType"/>
+      <div class="dd">
+        <calc-drop-down
+          v-model="dropDownPerimeterType"
+          label="Тип периметра"
+          :options="dropDownPerimeterTypeOptions"
+          @change="updatePerimeterType"/>
+      </div>
+      <div class="dd">
+        <calc-drop-down
+          v-model="dropDownGameVersion"
+          label="Версия игры"
+          :options="dropDownGameVersionOptions"
+          @change="updateGameVersion"/>
+      </div>
     </div>
     <h2>Введите данные</h2>
     <div class="perimeter-list">
@@ -36,9 +45,13 @@ export default {
         {value: 'circle', name: 'Круглый'},
         {value: 'rectangle', name: 'Прямоугольный'}
       ],
-
+      dropDownGameVersion: "",
+      dropDownGameVersionOptions: [
+        {value: '17', name: '1.17 и ранее'},
+        {value: '18', name: '1.18+'}
+      ],
       perimeters: [
-        {id: 1, perimeterType: "circle", lenX: "", lenY:"", version:"18"},
+        {id: 1, perimeterType: "circle", lenX: "", lenY:"", version:"17"},
       ],
       countPerimeter: 1
     }
@@ -49,7 +62,11 @@ export default {
         perimeter.perimeterType = this.dropDownPerimeterType
       })
     },
-
+    updateGameVersion(event){
+      this.perimeters.forEach(perimeter => {
+        perimeter.version = this.dropDownGameVersion
+      })
+    },
     addPerimeter() {
       this.countPerimeter +=1;
       const newPerimeter = {
@@ -57,7 +74,7 @@ export default {
         perimeterType: this.dropDownPerimeterType,
         lenX: "",
         lenY: "",
-        version: ""
+        version: this.dropDownGameVersion
       }
       this.perimeters.push(newPerimeter);
     }
@@ -66,7 +83,11 @@ export default {
 </script>
 
 <style scoped>
-
+.drop-downs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .btn{
   margin-top: 15px;
   align-self: flex-end;
