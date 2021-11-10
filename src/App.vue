@@ -36,7 +36,7 @@
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  width: 1024px;
+  width: 720px;
   background-color: rgb(255, 255, 255);
 }
 
