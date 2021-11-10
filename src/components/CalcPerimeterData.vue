@@ -1,16 +1,25 @@
 <template>
   <h3 class="perimeterNum">Периметр {{perimeter.id}}</h3>
-  <div class="inputs">
+  <div>
     <calc-input
-        label="Длина"
-        v-model="perimeter.lenX"
-        @input="updateInput"
+      class="single-input"
+      v-if="perimeter.perimeterType == 'circle'"
+      label="Радиус"
+      v-model="perimeter.lenX"
+      @input="updateInput"
     />
-    <calc-input
-        label="Длина"
-        v-model="perimeter.lenY"
-        @input="updateInput"
-    />
+    <div v-else class="inputs">
+      <calc-input
+          label="Длина"
+          v-model="perimeter.lenX"
+          @input="updateInput"
+      />
+      <calc-input
+          label="Ширина"
+          v-model="perimeter.lenY"
+          @input="updateInput"
+      />
+    </div>
   </div>
 </template>
 
@@ -42,6 +51,13 @@ export default {
 .perimeterNum{
   margin-top: 10px;
   padding: auto;
+}
+
+.single-input {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  align-items: end;
 }
 
 .inputs {
