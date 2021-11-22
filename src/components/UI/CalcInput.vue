@@ -5,8 +5,7 @@
     :value="modelValue"
     @input="updateInput"
     :type="$attrs.type"
-    @keydown="dotCheck"
-    pattern="[0-9]">
+    @keydown="valueCheck">
   <div v-if="$attrs.error != ''"> {{ $attrs.error }} </div>
 </div>
 </template>
@@ -24,7 +23,7 @@ export default {
         e.target.value = parseInt(e.target.value)
       this.$emit('update:modelValue', e.target.value)
     },
-    dotCheck(e) {
+    valueCheck(e) {
       if (e.key === '.')
         e.preventDefault()
       if (e.target.value.length == 0 && e.key === '0')
