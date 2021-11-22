@@ -90,14 +90,6 @@ export default {
   flex-direction: column;
   gap: 5px;
 }
-.btn{
-  margin-top: 15px;
-  align-self: flex-end;
-  padding: 10px 15px;
-  background: cornflowerblue;
-  color: white;
-  border: 1px blue;
-  border-radius: 4px;
-}
+
 
 </style>
