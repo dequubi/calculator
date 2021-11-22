@@ -35,6 +35,7 @@
   background-image: url("./assets/background.jpg");
   background-position: center;
   height: 100vh;
+  background-size: cover;
 }
 
 h2 {

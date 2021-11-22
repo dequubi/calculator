@@ -5,17 +5,20 @@
       v-if="perimeter.perimeterType == 'circle'"
       class="single-input"
       label="Радиус"
+      type="number"
       v-model="perimeter.lenX"
       @input="updateInput"
     />
     <div v-else class="inputs">
       <calc-input
           label="Длина"
+          type="number"
           v-model="perimeter.lenX"
           @input="updateInput"
       />
       <calc-input
           label="Ширина"
+          type="number"
           v-model="perimeter.lenY"
           @input="updateInput"
       />

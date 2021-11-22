@@ -10,6 +10,7 @@
       </div>
     <calc-input
         label="Количество предметов"
+        type="number"
         v-model="mob.lootQuantity"
         @input="updateInput"
     />
