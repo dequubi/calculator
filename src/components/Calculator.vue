@@ -1,21 +1,23 @@
 <template>
-  <h2>Выберите тип калькулятора</h2>
-  <div class="radio-list">
-    <div class="radio" v-for="radio in radioButtons" :key="radio.value">
-      <calc-radio-button
-          name="work-type"
-          :label="radio.label"
-          v-model="calc"
-          :value="radio.value"/>
+  <div class="cont">
+    <h2>Выберите тип калькулятора</h2>
+    <div class="radio-list">
+      <div class="radio" v-for="radio in radioButtons" :key="radio.value">
+        <calc-radio-button
+            name="work-type"
+            :label="radio.label"
+            v-model="calc"
+            :value="radio.value"/>
+      </div>
     </div>
+    <transition
+      name="fade"
+      mode="out-in">
+      <component
+          :is="calc"
+      />
+    </transition>
   </div>
-  <transition
-    name="fade"
-    mode="out-in">
-    <component
-        :is="calc"
-    />
-  </transition>
 </template>
 
 <script>
@@ -49,6 +51,16 @@ export default {
 
 
 <style>
+.cont {
+  padding: 20px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 720px;
+  background-color: white;
+  height: 100vh;
+}
+
 .radio-list {
   display: flex;
   flex-direction: column;

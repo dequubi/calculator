@@ -32,12 +32,9 @@
 }
 
 .app {
-  padding: 20px;
-  display: flex;
-  margin: 0 auto;
-  flex-direction: column;
-  width: 720px;
-  background-color: rgb(255, 255, 255);
+  background-image: url("./assets/background.jpg");
+  background-position: center;
+  height: 100vh;
 }
 
 h2 {
