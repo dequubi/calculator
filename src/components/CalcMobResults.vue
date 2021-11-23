@@ -40,19 +40,19 @@ export default {
             let p50, p75, p90, p100
 
             switch (mob.name) {
-                case 'Wither':
+                case 'Скелет-иссушитель':
                     p100 = parseInt(mob.lootQuantity / 0.025)
                     break;
-                case 'Enderman':
+                case 'Эндермен':
                     p100 = parseInt(mob.lootQuantity / 0.5)
                     break;
-                case 'Shulker':
+                case 'Шалкер':
                     p100 = parseInt(mob.lootQuantity / 0.5)
                     break;
-                case 'Blaze':
+                case 'Ифрит':
                     p100 = parseInt(mob.lootQuantity / 0.5)
                     break;
-                case 'Guardian':
+                case 'Страж':
                     p100 = parseInt(mob.lootQuantity / 0.6)
                     break;
                 default:
