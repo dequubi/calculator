@@ -25,7 +25,16 @@
         :key="perimeter.id"
       />
     </div>
-    <button class="btn" @click="addPerimeter">Добавить периметр</button>
+    <div class="buttons">
+      <button
+        v-if="countPerimeter < 5"
+        class="btn"
+        @click="addPerimeter">Добавить периметр</button>
+      <button
+        v-if="countPerimeter > 1"
+        class="btn-delete"
+        @click="deletePerimeter">Удалить периметр</button>
+    </div>
   </div>
 </template>
 
@@ -51,7 +60,7 @@ export default {
         {value: '18', name: '1.18+'}
       ],
       perimeters: [
-        {id: 1, perimeterType: "circle", lenX: "", lenY:"", version:"17"},
+        {id: 1, perimeterType: "rectangle", lenX: "", lenY:"", version:"17"},
       ],
       countPerimeter: 1
     }
@@ -70,6 +79,8 @@ export default {
       })
     },
     addPerimeter() {
+      if (this.countPerimeter >= 5)
+        return;
       this.countPerimeter +=1;
       const newPerimeter = {
         id: this.countPerimeter,
@@ -79,6 +90,12 @@ export default {
         version: this.dropDownGameVersion
       }
       this.perimeters.push(newPerimeter);
+    },
+    deletePerimeter(){
+      if (this.countPerimeter < 1)
+        return;
+      this.perimeters.pop()
+      this.countPerimeter--
     }
   }
 }
@@ -91,5 +108,8 @@ export default {
   gap: 5px;
 }
 
-
+.buttons {
+  display: flex;
+  gap: 10px;
+}
 </style>

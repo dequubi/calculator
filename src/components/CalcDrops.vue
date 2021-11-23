@@ -8,7 +8,16 @@
         :key="mob.id"
       />
     </div>
-    <button class="btn" @click="addMob">Добавить моба</button>
+    <div class="buttons">
+      <button
+        v-if="countMob < 5"
+        class="btn"
+        @click="addMob">Добавить моба</button>
+      <button
+        v-if="countMob > 1"
+        class="btn-delete"
+        @click="deleteMob">Удалить моба</button>
+    </div>
   </div>
 </template>
 
@@ -30,6 +39,8 @@ export default {
   },
   methods:{
     addMob(){
+      if (this.countMob >= 5)
+        return;
       this.countMob +=1;
       const newMob = {
         id: this.countMob,
@@ -37,7 +48,14 @@ export default {
         lootQuantity: ""
       }
       this.mobs.push(newMob);
+    },
+    deleteMob(){
+      if (this.countMob < 1)
+        return;
+      this.mobs.pop()
+      this.countMob--
     }
+
   }
 }
 </script>
@@ -50,5 +68,9 @@ export default {
   gap: 10px;
 }
 
+.buttons {
+  display: flex;
+  gap: 10px;
+}
 
 </style>

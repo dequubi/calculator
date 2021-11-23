@@ -24,7 +24,7 @@ export default {
       this.$emit('update:modelValue', e.target.value)
     },
     valueCheck(e) {
-      if (e.key === '.')
+      if (e.key === '.' || e.key === ',')
         e.preventDefault()
       if (e.target.value.length == 0 && e.key === '0')
         e.preventDefault()

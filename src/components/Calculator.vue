@@ -76,7 +76,7 @@ export default {
   opacity: 0;
 }
 
-.btn{
+.btn, .btn-delete {
   margin-top: 15px;
   align-self: flex-end;
   padding: 10px 15px;
@@ -87,7 +87,17 @@ export default {
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover, .btn-delete:hover {
   background: rgb(73, 112, 185);
+}
+
+.btn-delete {
+  background: #ed6476;
+  color: #000000;
+  border: 1px #ff0000;
+}
+
+.btn-delete:hover {
+  background: #ad3f4e;
 }
 </style>
