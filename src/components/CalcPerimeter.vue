@@ -34,17 +34,24 @@
         v-if="countPerimeter > 1"
         class="btn-delete"
         @click="deletePerimeter">Удалить периметр</button>
+      <button
+        class="btn-result"
+        @click="showResult">Рассчитать</button>
     </div>
+    <calc-perimeter-results
+      v-if="isResult"
+      :perimeters="perimeters"/>
   </div>
 </template>
 
 <script>
 import CalcDropDown from './UI/CalcDropDown.vue'
 import CalcPerimeterData from './CalcPerimeterData.vue'
+import CalcPerimeterResults from "./CalcPerimeterResults.vue"
 
 export default {
   name: "CalcPerimeter",
-  components: {CalcPerimeterData, CalcDropDown},
+  components: {CalcPerimeterData, CalcDropDown, CalcPerimeterResults},
 
   data() {
     return {
@@ -62,7 +69,8 @@ export default {
       perimeters: [
         {id: 1, perimeterType: "rectangle", lenX: "", lenY:"", version:"17"},
       ],
-      countPerimeter: 1
+      countPerimeter: 1,
+      isResult: false
     }
   },
   methods:{
@@ -96,6 +104,9 @@ export default {
         return;
       this.perimeters.pop()
       this.countPerimeter--
+    },
+    showResult() {
+      this.isResult = true
     }
   }
 }
@@ -112,4 +123,15 @@ export default {
   display: flex;
   gap: 10px;
 }
+
+.btn-result {
+  background-color: #a0c864;
+  border-color: #b0ff3a;
+  margin-left: auto;
+}
+
+.btn-result:hover {
+  background-color: #81a34e;
+}
+
 </style>

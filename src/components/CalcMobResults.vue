@@ -1,13 +1,105 @@
 <template>
+    <div class="table">
+        <div class="header">
+            <div class="h-cell name">Название моба</div>
+            <div class="h-cell quantity">Количество предметов</div>
+            <div class="h-cell 50-p">~50%</div>
+            <div class="h-cell 75-p">~75%</div>
+            <div class="h-cell 90-p">~90%</div>
+            <div class="h-cell 100-p">~100%</div>
+        </div>
+        <div v-for="mob in mobs" :key="mob.id">
+            <div v-if="mob.name != '' && mob.lootQuantity != ''" class="row">
+                <div class="cell name">{{mob.name}}</div>
+                <div class="cell quantity">{{mob.lootQuantity}}</div>
+                <div v-for="per in calculatePercentages(mob)" :key="per.name">
+                    <div :class="'cell ' + per.name">{{per.val}}</div>
+                </div>
+            </div>
+        </div>
 
+    </div>
 </template>
 
 <script>
+import { onUpdated } from '@vue/runtime-core'
 export default {
+    props: {
+        mobs: {
+            type: Array,
+            default: []
+        }
+    },
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        calculatePercentages(mob) {
+            let p50, p75, p90, p100
+
+            switch (mob.name) {
+                case 'Wither':
+                    p100 = parseInt(mob.lootQuantity / 0.025)
+                    break;
+                case 'Enderman':
+                    p100 = parseInt(mob.lootQuantity / 0.5)
+                    break;
+                case 'Shulker':
+                    p100 = parseInt(mob.lootQuantity / 0.5)
+                    break;
+                case 'Blaze':
+                    p100 = parseInt(mob.lootQuantity / 0.5)
+                    break;
+                case 'Guardian':
+                    p100 = parseInt(mob.lootQuantity / 0.6)
+                    break;
+                default:
+                    break;
+            }
+
+            p90 = parseInt(p100 * 0.9)
+            p75 = parseInt(p100 * 0.75)
+            p50 = parseInt(p100 * 0.5)
+
+            return [
+                {name: "fifty", val: p50},
+                {name: "seventy-five", val: p75},
+                {name: "ninty", val: p90},
+                {name: "hundred", val: p100},
+            ]
+
+        }
+    },
 
 }
 </script>
 
-<style>
+<style scoped>
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
+.header, .row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+}
+
+.h-cell, .cell {
+    padding: 5px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    background-color: #c7c7c7;
+    height: 100%;
+    border-radius: 3px;
+}
+
+.cell {
+    background-color: #f3f3f3;
+}
 </style>

@@ -76,7 +76,7 @@ export default {
   opacity: 0;
 }
 
-.btn, .btn-delete {
+.btn, .btn-delete, .btn-result {
   margin-top: 15px;
   align-self: flex-end;
   padding: 10px 15px;

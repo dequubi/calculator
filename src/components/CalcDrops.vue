@@ -17,28 +17,43 @@
         v-if="countMob > 1"
         class="btn-delete"
         @click="deleteMob">Удалить моба</button>
+      <button v-if="!isResult"
+        class="btn-result"
+        @click="showResult">Показть расчеты</button>
+      <button v-else
+        class="btn-result"
+        @click="showResult">Скрыть расчеты</button>
     </div>
+    <transition
+      name="fade"
+      mode="out-in">
+      <calc-mob-results
+        v-if="isResult"
+        :mobs="mobs"/>
+    </transition>
   </div>
 </template>
 
 <script>
 
-import CalcDropDown from "./UI/CalcDropDown";
-import CalcMob from "./CalcMob";
+import CalcDropDown from "./UI/CalcDropDown"
+import CalcMob from "./CalcMob"
+import CalcMobResults from "./CalcMobResults.vue"
 
 export default {
   name: "CalcDrops",
-  components: {CalcMob, CalcDropDown},
+  components: {CalcMob, CalcDropDown, CalcMobResults},
   data() {
     return {
       mobs: [
         {id: 1, name: "", lootQuantity: ""},
       ],
-      countMob: 1
+      countMob: 1,
+      isResult: false
     }
   },
   methods:{
-    addMob(){
+    addMob() {
       if (this.countMob >= 5)
         return;
       this.countMob +=1;
@@ -49,18 +64,29 @@ export default {
       }
       this.mobs.push(newMob);
     },
-    deleteMob(){
+    deleteMob() {
       if (this.countMob < 1)
         return;
       this.mobs.pop()
       this.countMob--
+    },
+    showResult() {
+      this.isResult = !this.isResult
     }
-
   }
 }
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 
 .filters {
   display: flex;
@@ -71,6 +97,19 @@ export default {
 .buttons {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
+
+.btn-result {
+  background-color: #a0c864;
+  border-color: #b0ff3a;
+  margin-left: auto;
+}
+
+.btn-result:hover {
+  background-color: #81a34e;
+}
+
+
 
 </style>
