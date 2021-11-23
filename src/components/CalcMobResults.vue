@@ -37,31 +37,32 @@ export default {
     },
     methods: {
         calculatePercentages(mob) {
-            let p50, p75, p90, p100
+            let p, p50, p75, p90, p100
 
             switch (mob.name) {
                 case 'Скелет-иссушитель':
-                    p100 = parseInt(mob.lootQuantity / 0.025)
-                    break;
+                    p = 0.025
+                    break
                 case 'Эндермен':
-                    p100 = parseInt(mob.lootQuantity / 0.5)
-                    break;
+                    p = 0.5
+                    break
                 case 'Шалкер':
-                    p100 = parseInt(mob.lootQuantity / 0.5)
-                    break;
+                    p = 0.5
+                    break
                 case 'Ифрит':
-                    p100 = parseInt(mob.lootQuantity / 0.5)
-                    break;
+                    p = 0.5
+                    break
                 case 'Страж':
-                    p100 = parseInt(mob.lootQuantity / 0.6)
-                    break;
+                    p = 0.6
+                    break
                 default:
-                    break;
+                    break
             }
 
-            p90 = parseInt(p100 * 0.9)
-            p75 = parseInt(p100 * 0.75)
-            p50 = parseInt(p100 * 0.5)
+            p100 = Number(mob.lootQuantity) * this.trials(p, 0.99)
+            p90 = Number(mob.lootQuantity) * this.trials(p, 0.90)
+            p75 = Number(mob.lootQuantity) * this.trials(p, 0.75)
+            p50 = Number(mob.lootQuantity) * this.trials(p, 0.50)
 
             return [
                 {name: "fifty", val: p50},
@@ -70,6 +71,9 @@ export default {
                 {name: "hundred", val: p100},
             ]
 
+        },
+        trials(p, n) {
+            return Math.ceil(Math.log(1.0 - n) / Math.log(1.0 - p));
         }
     },
 
