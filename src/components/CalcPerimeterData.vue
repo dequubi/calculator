@@ -2,7 +2,7 @@
   <h3 class="perimeterNum">Периметр {{perimeter.id}}</h3>
   <div>
     <calc-input
-      v-if="perimeter.perimeterType == 'circle'"
+      v-if="perimeter.perimeterType === 'circle'"
       class="single-input"
       label="Радиус"
       type="number"

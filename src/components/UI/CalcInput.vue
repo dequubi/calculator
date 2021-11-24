@@ -6,7 +6,7 @@
     @input="updateInput"
     :type="$attrs.type"
     @keydown="valueCheck">
-  <div v-if="$attrs.error != ''"> {{ $attrs.error }} </div>
+  <div v-if="$attrs.error !== ''"> {{ $attrs.error }} </div>
 </div>
 </template>
 
@@ -19,14 +19,14 @@ export default {
   },
   methods: {
     updateInput(e) {
-      if (e.target.value.length != 0)
+      if (e.target.value.length !== 0)
         e.target.value = parseInt(e.target.value)
       this.$emit('update:modelValue', e.target.value)
     },
     valueCheck(e) {
       if (e.key === '.' || e.key === ',' || e.key === 'e')
         e.preventDefault()
-      if (e.target.value.length == 0 && e.key === '0')
+      if (e.target.value.length === 0 && e.key === '0')
         e.preventDefault()
     }
   }
