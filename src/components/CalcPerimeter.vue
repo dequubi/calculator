@@ -77,7 +77,7 @@ export default {
     updatePerimeterType(event){
       this.perimeters.forEach(perimeter => {
         perimeter.perimeterType = this.dropDownPerimeterType
-        if (this.dropDownPerimeterType == "circle")
+        if (this.dropDownPerimeterType === "circle")
           perimeter.lenY = ""
       })
     },

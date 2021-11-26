@@ -9,7 +9,7 @@
             <div class="h-cell 100-p">~100%</div>
         </div>
         <template v-for="mob in mobs" :key="mob.id">
-            <div v-if="mob.name != '' && mob.lootQuantity != ''" class="row">
+            <div v-if="mob.name !== '' && mob.lootQuantity !== ''" class="row">
                 <div class="cell name">{{mob.name}}</div>
                 <div class="cell quantity">{{mob.lootQuantity}}</div>
                 <div v-for="per in calculatePercentages(mob)" :key="per.name">
