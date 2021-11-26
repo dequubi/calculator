@@ -8,7 +8,7 @@
             <div class="h-cell 90-p">~90%</div>
             <div class="h-cell 100-p">~100%</div>
         </div>
-        <div v-for="mob in mobs" :key="mob.id">
+        <template v-for="mob in mobs" :key="mob.id">
             <div v-if="mob.name != '' && mob.lootQuantity != ''" class="row">
                 <div class="cell name">{{mob.name}}</div>
                 <div class="cell quantity">{{mob.lootQuantity}}</div>
@@ -16,8 +16,7 @@
                     <div :class="'cell ' + per.name">{{per.val}}</div>
                 </div>
             </div>
-        </div>
-
+        </template>
     </div>
 </template>
 
