@@ -22,22 +22,22 @@
 
 <script>
 
-import CalcDrops from "@/components/CalcDrops";
+import CalcMob from "@/components/CalcMob";
 import CalcPerimeter from "@/components/CalcPerimeter";
 import CalcRadioButton from "./UI/CalcRadioButton";
 
 export default {
   name: "Calculator",
 
-  components: {CalcRadioButton, CalcDrops, CalcPerimeter},
+  components: {CalcRadioButton, CalcMob, CalcPerimeter},
 
   data() {
     return {
-      calc : 'calc-drops',
+      calc : 'calc-mob',
       radioButtons: [
         {
           label: "Сколько мобов нужно убить, чтобы гарантированно выбить с них X количество лута",
-          value: "calc-drops"
+          value: "calc-mob"
         },
         {
           label: "Калькулятор периметра",
