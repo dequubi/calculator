@@ -58,10 +58,11 @@ export default {
                     break
             }
 
-            p100 = Number(mob.lootQuantity) * this.trials(p, 0.99)
-            p90 = Number(mob.lootQuantity) * this.trials(p, 0.90)
-            p75 = Number(mob.lootQuantity) * this.trials(p, 0.75)
-            p50 = Number(mob.lootQuantity) * this.trials(p, 0.50)
+            const magic = 2.3694196
+            p100 = Math.ceil(Number(mob.lootQuantity) * this.trials(p, 0.99) * magic)
+            p90 = Math.ceil(Number(mob.lootQuantity) * this.trials(p, 0.90) * magic)
+            p75 = Math.ceil(Number(mob.lootQuantity) * this.trials(p, 0.75) * magic)
+            p50 = Math.ceil(Number(mob.lootQuantity) * this.trials(p, 0.50) * magic)
 
             return [
                 {name: "fifty", val: p50},
