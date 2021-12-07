@@ -148,6 +148,7 @@ export default {
       this.$emit('hideInput', this.isResult)
     },
     newCalc() {
+      this.countPerimeter = 1
       this.dropDownPerimeterType = ""
       this.dropDownGameVersion = ""
       this.perimeters = [{id: 1, perimeterType: "rectangle", lenX: "", lenY:"", version:"17"}]
