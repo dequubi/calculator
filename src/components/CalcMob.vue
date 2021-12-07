@@ -23,19 +23,18 @@
           @click="showResult">Показать расчеты</button>
       </div>
     </div>
-    <!-- <transition
-      name="fade"
-      mode="out-in"> -->
+    <div class="results"
+      v-if="isResult">
+      <h2>Результаты</h2>
       <calc-mob-results
-        v-if="isResult"
         :mobs="mobs"/>
-    <!-- </transition> -->
-    <button v-if="isResult"
-      class="btn-result"
-      @click="showResult">
-      <div class="arrow">&#5176;</div>
-      <div class="text">Изменить расчеты</div>
-    </button>
+      <button
+        class="btn-result"
+        @click="showResult">
+        <div class="arrow">&#5176;</div>
+        <div class="text">Изменить расчеты</div>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -84,16 +83,6 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .filters {
   display: flex;
   flex-direction: column;

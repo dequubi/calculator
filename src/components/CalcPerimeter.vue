@@ -1,46 +1,57 @@
 <template>
   <div>
-    <h2>Выберите фильтры</h2>
-    <div class="drop-downs">
-      <div class="dd">
-        <calc-drop-down
-          v-model="dropDownPerimeterType"
-          label="Тип периметра"
-          :options="dropDownPerimeterTypeOptions"
-          @change="updatePerimeterType"/>
+    <div class="inputs" v-if="!isResult">
+      <h2>Выберите фильтры</h2>
+      <div class="drop-downs">
+        <div class="dd">
+          <calc-drop-down
+            v-model="dropDownPerimeterType"
+            label="Тип периметра"
+            :options="dropDownPerimeterTypeOptions"
+            @change="updatePerimeterType"/>
+        </div>
+        <div class="dd">
+          <calc-drop-down
+            v-model="dropDownGameVersion"
+            label="Версия игры"
+            :options="dropDownGameVersionOptions"
+            @change="updateGameVersion"/>
+        </div>
       </div>
-      <div class="dd">
-        <calc-drop-down
-          v-model="dropDownGameVersion"
-          label="Версия игры"
-          :options="dropDownGameVersionOptions"
-          @change="updateGameVersion"/>
+      <h2>Введите данные</h2>
+      <div class="perimeter-list">
+        <calc-perimeter-data
+          v-for="perimeter in perimeters"
+          :perimeter="perimeter"
+          :key="perimeter.id"
+        />
+      </div>
+      <div class="buttons">
+        <button
+          v-if="countPerimeter < 5"
+          class="btn"
+          @click="addPerimeter">Добавить периметр</button>
+        <button
+          v-if="countPerimeter > 1"
+          class="btn-delete"
+          @click="deletePerimeter">Удалить периметр</button>
+        <button
+          class="btn-result"
+          @click="showResult">Рассчитать</button>
       </div>
     </div>
-    <h2>Введите данные</h2>
-    <div class="perimeter-list">
-      <calc-perimeter-data
-        v-for="perimeter in perimeters"
-        :perimeter="perimeter"
-        :key="perimeter.id"
-      />
-    </div>
-    <div class="buttons">
-      <button
-        v-if="countPerimeter < 5"
-        class="btn"
-        @click="addPerimeter">Добавить периметр</button>
-      <button
-        v-if="countPerimeter > 1"
-        class="btn-delete"
-        @click="deletePerimeter">Удалить периметр</button>
+    <div class="results"
+        v-if="isResult">
+      <h2>Результаты</h2>
+      <calc-perimeter-results
+        :perimeters="perimeters"/>
       <button
         class="btn-result"
-        @click="showResult">Рассчитать</button>
+        @click="showResult">
+        <div class="arrow">&#5176;</div>
+        <div class="text">Изменить расчеты</div>
+      </button>
     </div>
-    <calc-perimeter-results
-      v-if="isResult"
-      :perimeters="perimeters"/>
   </div>
 </template>
 
@@ -106,7 +117,8 @@ export default {
       this.countPerimeter--
     },
     showResult() {
-      this.isResult = true
+      this.isResult = !this.isResult
+      this.$emit('hideInput', this.isResult)
     }
   }
 }
@@ -129,7 +141,15 @@ export default {
   background-color: #a0c864;
   border-color: #b0ff3a;
   margin-left: auto;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
+
+.arrow {
+  font-weight: 700;
+}
+
 
 .btn-result:hover {
   background-color: #81a34e;
