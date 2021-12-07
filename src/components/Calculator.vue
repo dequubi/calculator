@@ -1,7 +1,7 @@
 <template>
   <div class="cont">
-    <h2>Выберите тип калькулятора</h2>
-    <div class="radio-list">
+    <div class="radio-list"  v-if="!hideForResult">
+      <h2>Выберите тип калькулятора</h2>
       <div class="radio" v-for="radio in radioButtons" :key="radio.value">
         <calc-radio-button
             name="work-type"
@@ -15,6 +15,7 @@
       mode="out-in">
       <component
           :is="calc"
+          @hide-input="hideInput"
       />
     </transition>
   </div>
@@ -33,7 +34,8 @@ export default {
 
   data() {
     return {
-      calc : 'calc-mob',
+      hideForResult: false,
+      calc: 'calc-mob',
       radioButtons: [
         {
           label: "Сколько мобов нужно убить, чтобы гарантированно выбить с них X количество лута",
@@ -44,6 +46,11 @@ export default {
           value: "calc-perimeter"
         }
       ]
+    }
+  },
+  methods: {
+    hideInput(hideRequest) {
+      this.hideForResult = hideRequest;
     }
   }
 }

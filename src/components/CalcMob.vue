@@ -1,36 +1,41 @@
 <template>
   <div>
-    <h2>Введите данные</h2>
-    <div class="mob-list">
-      <calc-mob-data
-        v-for="mob in mobs"
-        :mob="mob"
-        :key="mob.id"
-      />
+    <div v-if="!isResult">
+      <h2>Введите данные</h2>
+      <div class="mob-list">
+        <calc-mob-data
+          v-for="mob in mobs"
+          :mob="mob"
+          :key="mob.id"
+        />
+      </div>
+      <div class="buttons">
+        <button
+          v-if="countMob < 5"
+          class="btn"
+          @click="addMob">Добавить моба</button>
+        <button
+          v-if="countMob > 1"
+          class="btn-delete"
+          @click="deleteMob">Удалить моба</button>
+        <button v-if="!isResult"
+          class="btn-result"
+          @click="showResult">Показать расчеты</button>
+      </div>
     </div>
-    <div class="buttons">
-      <button
-        v-if="countMob < 5"
-        class="btn"
-        @click="addMob">Добавить моба</button>
-      <button
-        v-if="countMob > 1"
-        class="btn-delete"
-        @click="deleteMob">Удалить моба</button>
-      <button v-if="!isResult"
-        class="btn-result"
-        @click="showResult">Показть расчеты</button>
-      <button v-else
-        class="btn-result"
-        @click="showResult">Скрыть расчеты</button>
-    </div>
-    <transition
+    <!-- <transition
       name="fade"
-      mode="out-in">
+      mode="out-in"> -->
       <calc-mob-results
         v-if="isResult"
         :mobs="mobs"/>
-    </transition>
+    <!-- </transition> -->
+    <button v-if="isResult"
+      class="btn-result"
+      @click="showResult">
+      <div class="arrow">&#5176;</div>
+      <div class="text">Изменить расчеты</div>
+    </button>
   </div>
 </template>
 
@@ -72,6 +77,7 @@ export default {
     },
     showResult() {
       this.isResult = !this.isResult
+      this.$emit('hideInput', this.isResult)
     }
   }
 }
@@ -104,6 +110,13 @@ export default {
   background-color: #a0c864;
   border-color: #b0ff3a;
   margin-left: auto;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.arrow {
+  font-weight: 700;
 }
 
 .btn-result:hover {
