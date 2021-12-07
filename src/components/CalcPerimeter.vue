@@ -8,14 +8,16 @@
             v-model="dropDownPerimeterType"
             label="Тип периметра"
             :options="dropDownPerimeterTypeOptions"
-            @change="updatePerimeterType"/>
+            @change="updatePerimeterType"
+            :error="perimeters[0].typeError"/>
         </div>
         <div class="dd">
           <calc-drop-down
             v-model="dropDownGameVersion"
             label="Версия игры"
             :options="dropDownGameVersionOptions"
-            @change="updateGameVersion"/>
+            @change="updateGameVersion"
+            :error="perimeters[0].versionError"/>
         </div>
       </div>
       <h2>Введите данные</h2>
@@ -45,12 +47,19 @@
       <h2>Результаты</h2>
       <calc-perimeter-results
         :perimeters="perimeters"/>
-      <button
-        class="btn-result"
-        @click="showResult">
-        <div class="arrow">&#5176;</div>
-        <div class="text">Изменить расчеты</div>
-      </button>
+      <div class="buttons">
+        <button
+          class="btn"
+          @click="showResult">
+          <div class="arrow">&#5176;</div>
+          <div class="text">Изменить расчеты</div>
+        </button>
+        <button
+          class="btn-result"
+          @click="newCalc">
+          <div class="text">Новый расчёт</div>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -66,11 +75,10 @@ export default {
 
   data() {
     return {
-
       dropDownPerimeterType: "",
       dropDownPerimeterTypeOptions: [
-        {value: 'circle', name: 'Круглый'},
-        {value: 'rectangle', name: 'Прямоугольный'}
+        {value: 'rectangle', name: 'Прямоугольный'},
+        {value: 'circle', name: 'Круглый'}
       ],
       dropDownGameVersion: "",
       dropDownGameVersionOptions: [
@@ -117,6 +125,32 @@ export default {
       this.countPerimeter--
     },
     showResult() {
+      let flag = false
+      this.perimeters.forEach((perim, index) => {
+        perim.xError = perim.lenX === ''
+        if (perim.perimeterType == "rectangle") {
+          perim.yError = perim.lenY === ''
+          if (perim.xError || perim.yError)
+            flag = true
+        } else {
+          if (perim.xError)
+            flag = true
+        }
+      })
+
+      this.perimeters[0].typeError = this.dropDownPerimeterType == ''
+      this.perimeters[0].versionError = this.dropDownGameVersion == ''
+      if (this.perimeters[0].typeError || this.perimeters[0].versionError)
+        flag = true
+      if (flag) return
+
+      this.isResult = !this.isResult
+      this.$emit('hideInput', this.isResult)
+    },
+    newCalc() {
+      this.dropDownPerimeterType = ""
+      this.dropDownGameVersion = ""
+      this.perimeters = [{id: 1, perimeterType: "rectangle", lenX: "", lenY:"", version:"17"}]
       this.isResult = !this.isResult
       this.$emit('hideInput', this.isResult)
     }

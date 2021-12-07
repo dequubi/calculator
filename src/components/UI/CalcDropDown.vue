@@ -1,6 +1,10 @@
 <template>
   <div> {{ $attrs.label }}</div>
-  <select v-model="modelValue" @change="changeOption" :class="{error: $attrs.error}">
+  <select
+    v-model="modelValue"
+    @change="changeOption"
+    :class="{error: $attrs.error}"
+    >
     <option disabled value="">Выберите из списка</option>
     <option
         v-for="option in options"
@@ -15,10 +19,9 @@
 <script>
 export default {
   name: "CalcDropDown",
-
   props: {
     modelValue: {
-      type: String
+      type: String,
     },
     options: {
       type: Array,

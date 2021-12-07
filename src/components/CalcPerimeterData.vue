@@ -8,6 +8,7 @@
       type="number"
       v-model="perimeter.lenX"
       @input="updateInput"
+      :error="perimeter.xError"
     />
     <div v-else class="inputs">
       <calc-input
@@ -15,12 +16,14 @@
           type="number"
           v-model="perimeter.lenX"
           @input="updateInput"
+          :error="perimeter.xError"
       />
       <calc-input
           label="Ширина"
           type="number"
           v-model="perimeter.lenY"
           @input="updateInput"
+          :error="perimeter.yError"
       />
     </div>
   </div>
