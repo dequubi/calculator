@@ -122,6 +122,7 @@ export default {
 .buttons {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .btn-result {
