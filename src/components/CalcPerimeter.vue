@@ -128,7 +128,7 @@ export default {
       let flag = false
       this.perimeters.forEach((perim, index) => {
         perim.xError = perim.lenX === ''
-        if (perim.perimeterType == "rectangle") {
+        if (perim.perimeterType == "rectangle" || perim.perimeterType == '') {
           perim.yError = perim.lenY === ''
           if (perim.xError || perim.yError)
             flag = true
