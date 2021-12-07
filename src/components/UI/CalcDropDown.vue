@@ -1,6 +1,6 @@
 <template>
   <div> {{ $attrs.label }}</div>
-  <select v-model="modelValue" @change="changeOption">
+  <select v-model="modelValue" @change="changeOption" :class="{error: $attrs.error}">
     <option disabled value="">Выберите из списка</option>
     <option
         v-for="option in options"
@@ -37,5 +37,9 @@ export default {
 <style scoped>
 select {
   width: 100%;
+}
+
+.error {
+  border-color: #ff4f4f;
 }
 </style>

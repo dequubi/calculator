@@ -5,8 +5,8 @@
     :value="modelValue"
     @input="updateInput"
     :type="$attrs.type"
-    @keydown="valueCheck">
-  <div v-if="$attrs.error !== ''"> {{ $attrs.error }} </div>
+    @keydown="valueCheck"
+    :class="{error: $attrs.error}">
 </div>
 </template>
 
@@ -37,6 +37,10 @@ export default {
 
 .label {
   font-size: smaller;
+}
+
+.error {
+  border-color: #ff4f4f;
 }
 
 input {

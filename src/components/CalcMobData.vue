@@ -6,6 +6,7 @@
             v-model="mob.name"
             label="Название моба"
             :options="mobTypeOptions"
+            :error="mob.nameError"
         />
       </div>
     <calc-input
@@ -13,6 +14,7 @@
         type="number"
         v-model="mob.lootQuantity"
         @input="updateInput"
+        :error="mob.lootError"
     />
   </div>
 </template>

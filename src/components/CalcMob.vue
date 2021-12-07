@@ -28,12 +28,19 @@
       <h2>Результаты</h2>
       <calc-mob-results
         :mobs="mobs"/>
-      <button
-        class="btn-result"
-        @click="showResult">
-        <div class="arrow">&#5176;</div>
-        <div class="text">Изменить расчеты</div>
-      </button>
+      <div class="buttons">
+        <button
+          class="btn"
+          @click="showResult">
+          <div class="arrow">&#5176;</div>
+          <div class="text">Изменить расчеты</div>
+        </button>
+        <button
+          class="btn-result"
+          @click="newCalc">
+          <div class="text">Новый расчёт</div>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -75,6 +82,20 @@ export default {
       this.countMob--
     },
     showResult() {
+      let flag = false
+      this.mobs.forEach((mob,index) => {
+        mob.nameError = mob.name === ''
+        mob.lootError = mob.lootQuantity === ''
+        if (mob.nameError || mob.lootError)
+          flag = true
+      })
+      if (flag) return
+      this.isResult = !this.isResult
+      this.$emit('hideInput', this.isResult)
+    },
+    newCalc() {
+      this.mobs = [{id: 1, name: "", lootQuantity: ""}]
+      this.countMob = 1;
       this.isResult = !this.isResult
       this.$emit('hideInput', this.isResult)
     }
