@@ -49,7 +49,7 @@
         :perimeters="perimeters"/>
       <div class="buttons">
         <button
-          class="btn"
+          class="btn-change"
           @click="showResult">
           <div class="arrow">&#5176;</div>
           <div class="text">Изменить расчеты</div>
@@ -175,6 +175,11 @@ export default {
   background-color: #a0c864;
   border-color: #b0ff3a;
   margin-left: auto;
+
+}
+
+.btn-change {
+  margin-left: 0;
   display: flex;
   gap: 5px;
   align-items: center;
@@ -183,7 +188,6 @@ export default {
 .arrow {
   font-weight: 700;
 }
-
 
 .btn-result:hover {
   background-color: #81a34e;
